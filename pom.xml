@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.fujion.webjars</groupId>
+		<artifactId>fujion-webjars</artifactId>
+		<version>3.0.0</version>
+	</parent>
+
+	<name>Lodash Library</name>
+	<artifactId>webjar-leaflet</artifactId>
+	<version>1.7.1</version>
+	<description>Leaflet interactive maps library.</description>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>npm-install</id>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>precompile</id>
+						<configuration>
+							<target>
+								<copy tofile="${src.rootdir}/package.json" file="${basedir}/package-template.json">
+									<filterchain>
+										<expandproperties />
+									</filterchain>
+								</copy>
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>postcompile</id>
+						<configuration>
+							<target>
+								<copy todir="${webjar.target}">
+									<fileset dir="${src.rootdir}/node_modules/leaflet" includes="LICENSE,README.md,dist/" excludes="**/*.html" />
+								</copy>
+								<copy file="${src.rootdir}/node_modules/leaflet/dist/leaflet-src.js" tofile="${webjar.target}/dist/leaflet.js" />
+								<copy file="${src.rootdir}/node_modules/leaflet/dist/leaflet.js" tofile="${webjar.target}/dist/leaflet.min.js" />
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

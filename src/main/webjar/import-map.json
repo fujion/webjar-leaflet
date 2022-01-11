@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "leaflet": "dist/leaflet.js",
+    "leaflet-css": "dist/leaflet.css"
+  }
+}
