@@ -1,3 +1,3 @@
-# webjar-lodash
-Web jar for lodash.
-https://github.com/lodash/lodash
+# webjar-leaflet
+Web jar for leaflet interactive maps library.
+https://github.com/Leaflet/Leaflet
