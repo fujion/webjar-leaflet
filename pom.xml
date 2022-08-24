@@ -9,7 +9,7 @@
 
 	<name>Lodash Library</name>
 	<artifactId>webjar-leaflet</artifactId>
-	<version>1.7.1</version>
+	<version>1.8.0</version>
 	<description>Leaflet interactive maps library.</description>
 	
 	<build>
