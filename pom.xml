@@ -7,13 +7,36 @@
 		<version>3.2.0-SNAPSHOT</version>
 	</parent>
 
-	<name>Lodash Library</name>
+	<name>Leaflet Maps Library</name>
 	<artifactId>webjar-leaflet</artifactId>
 	<version>1.9.4-SNAPSHOT</version>
 	<description>Leaflet interactive maps library.</description>
-	
+
+	<properties>
+		<npm-install.skip>false</npm-install.skip>
+	</properties>
+
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.fujion.webjars</groupId>
+				<artifactId>webjar-validator-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>validate-webjar</id>
+						<configuration>
+							<rules>
+								<rule>file_exists import-map.json</rule>
+								<rule>file_exists README.md</rule>
+								<rule>file_contains LICENSE "BSD 2-Clause License"</rule>
+								<rule>file_exists dist/leaflet.js</rule>
+								<rule>file_exists dist/leaflet.css</rule>
+								<rule>dir_exists dist/images</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
