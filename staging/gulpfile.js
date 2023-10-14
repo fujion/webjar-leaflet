@@ -2,7 +2,7 @@ const {src, dest, series} = require('gulp');
 const minifyCSS = require('gulp-clean-css');
 const rename = require("gulp-rename");
 
-const srcDir = '${src.rootdir}/node_modules/leaflet/';
+const srcDir = '${webjar.staging}/node_modules/leaflet/';
 const destDir = '${webjar.target}/';
 
 function task1() {
